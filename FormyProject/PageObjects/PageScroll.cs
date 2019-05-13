@@ -1,8 +1,5 @@
-﻿using System.Runtime.InteropServices;
-using System.Threading;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.PageObjects;
 
 namespace FormyProject.PageObjects
@@ -15,8 +12,9 @@ namespace FormyProject.PageObjects
         {
             _driver = driver;
         }
-
+        [CacheLookup]
         private readonly By _fullName = By.Id("name");
+        [CacheLookup]
         private readonly By _date = By.Id("date");
 
         private readonly By _pageLogo = By.Id("logo");

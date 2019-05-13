@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
 namespace FormyProject.PageObjects
@@ -17,8 +11,9 @@ namespace FormyProject.PageObjects
         {
             _driver = driver;
         }
-
+        [CacheLookup]
         private readonly By _pageLogo = By.Id("logo");
+        [CacheLookup]
         private readonly By _alertButton = By.Id("alert-button");
 
         public bool IsAt()

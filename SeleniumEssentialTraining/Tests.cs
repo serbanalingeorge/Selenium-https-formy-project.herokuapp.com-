@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using FormyProject.Browser;
-using FormyProject.pages;
+﻿using FormyProject.Browser;
 using FormyProject.PageObjects;
+using FormyProject.pages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace SeleniumEssentialTraining
@@ -18,7 +11,22 @@ namespace SeleniumEssentialTraining
     {
         private DriverManager _driverManager;
         private IWebDriver _driver;
-        
+
+        [TestMethod]
+        public void TestSwitchWindow()
+        {
+            _driverManager = new FirefoxDriverManager();
+            _driver = _driverManager.GetWebDriver();
+            var switchWindow = new SwitchWindow(_driver);
+            switchWindow.GoTo();
+            switchWindow.IsAt();
+            switchWindow.OpenNewWindow(1);
+            //Thread.Sleep(2000);
+            switchWindow.SwitchToFirstWindow();
+            //Thread.Sleep(2000);
+            _driverManager.QuitWebDriver();
+        }
+
         [TestMethod]
         public void TestRadioButton()
         {

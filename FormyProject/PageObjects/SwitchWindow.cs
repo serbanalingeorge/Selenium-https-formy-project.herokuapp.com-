@@ -1,42 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
 namespace FormyProject.PageObjects
 {
-    public class SwitchWindow
+    public class SwitchWindow : IPage
     {
-        private IWebDriver driver;
-        
+        private readonly IWebDriver _driver;
 
-        [FindsBy(How = How.Id, Using = "logo")]
-        private IWebElement PageLogo { get; set; }
+        public SwitchWindow(IWebDriver driver)
+        {
+            _driver = driver;
+        }
 
-        [FindsBy(How = How.Id, Using = "new-tab-button")]
-        private IWebElement NewWindow { get; set; }
+        [CacheLookup]
+        private readonly By _pageLogo = By.Id("logo");
+
+        [CacheLookup]
+        private readonly By _newWindow = By.Id("new-tab-button");
 
 
         public bool IsAt()
         {
-            return PageLogo.Displayed;
+            return _driver.FindElement(_pageLogo).Displayed;
+        }
+
+        public void GoTo()
+        {
+            _driver.Navigate().GoToUrl("https://formy-project.herokuapp.com/switch-window");
         }
 
         public void OpenNewWindow(int newWidows)
         {
-            NewWindow.Click();
+            _driver.FindElement(_newWindow).Click();
         }
 
         public void SwitchToFirstWindow()
         {
-            var originalHandle = driver.CurrentWindowHandle;
-            driver.SwitchTo().Window(originalHandle);
+            var originalHandle = _driver.CurrentWindowHandle;
+            _driver.SwitchTo().Window(originalHandle);
         }
     }
 }

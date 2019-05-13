@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using FormyProject.PageObjects;
+﻿using FormyProject.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using OpenQA.Selenium.Support.UI;
 
 namespace FormyProject.pages
 {
@@ -12,7 +8,7 @@ namespace FormyProject.pages
     {
        
         private readonly IWebDriver _driver;
-
+        [CacheLookup]
         private readonly By _pageLogo = By.Id("logo");
 
         public HomePage(IWebDriver driver)

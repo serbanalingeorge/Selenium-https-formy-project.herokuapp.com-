@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.PageObjects;
 
 namespace FormyProject.PageObjects
 {
@@ -15,10 +11,13 @@ namespace FormyProject.PageObjects
         {
             _driver = driver;
         }
-
+        [CacheLookup]
         private readonly By _pageLogo = By.Id("logo");
+        [CacheLookup]
         private readonly By _dropDownButton = By.CssSelector("#dropdownMenuButton");
+        [CacheLookup]
         private readonly By _autocompleteOption = By.CssSelector("#autocomplete");
+        [CacheLookup]
         private readonly By _pageTitle = By.XPath("/html/body/div[1]/h1");
         public bool IsAt()
         {

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.PageObjects;
 
 namespace FormyProject.PageObjects
 {
@@ -15,9 +11,13 @@ namespace FormyProject.PageObjects
         {
             _driver = driver;
         }
-        private readonly By _pageLogo = By.Id("logo"); 
+        [CacheLookup]
+        private readonly By _pageLogo = By.Id("logo");
+        [CacheLookup]
         private readonly By _radioButton1 = By.Id("radio-button-1");
+        [CacheLookup]
         private readonly By _radioButton2 = By.CssSelector("input[value='option2']");
+        [CacheLookup]
         private readonly By _radioButton3 = By.XPath("//div[3]/input");
         public bool IsAt()
         {

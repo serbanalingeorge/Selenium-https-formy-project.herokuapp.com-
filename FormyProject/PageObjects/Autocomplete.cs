@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace FormyProject.PageObjects
 {
@@ -17,9 +13,11 @@ namespace FormyProject.PageObjects
         {
             _driver = driver;
         }
-
+        [CacheLookup]
         private readonly By _pageLogo = By.Id("logo");
+        [CacheLookup]
         private readonly By _addressField = By.Id("autocomplete");
+        [CacheLookup]
         private readonly By _autocompleteResult = By.ClassName("pac-item");
 
         public void GoTo()
